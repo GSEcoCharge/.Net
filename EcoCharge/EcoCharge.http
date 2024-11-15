@@ -1,0 +1,6 @@
+@EcoCharge_HostAddress = http://localhost:5232
+
+GET {{EcoCharge_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
