@@ -18,9 +18,6 @@ public class ChargingPost
     public string PaymentMethods { get; set; }
     public float AvarageRating { get; set; }
     
-    public ICollection<Evaluation> Evaluations { get; set; }
-    public ICollection<ChargingPoint> ChargingPoints { get; set; }
-
     public ChargingPost(string name, float latitude, float longitude, string address, string openHours, string paymentMethods, float avarageRating)
     {
         Name = name;

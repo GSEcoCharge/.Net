@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("EcoCharge")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b50534cbf209991afef1030309b7ef5b6d14cc94")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3cf3b644159cf4d5f59e0f84b4b8ed2117dcfee5")]
 [assembly: System.Reflection.AssemblyProductAttribute("EcoCharge")]
 [assembly: System.Reflection.AssemblyTitleAttribute("EcoCharge")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

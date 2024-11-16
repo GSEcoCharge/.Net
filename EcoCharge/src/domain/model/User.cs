@@ -16,17 +16,34 @@ public class User
     public string Email { get; set; }
     [Required]
     public string Password { get; set; }
-    public Blob ProfileImage { get; set; }
+    public string ProfileImage { get; set; }
     public string CreatedAt { get; set; }
     public string LastLocation { get; set; }
     
-    public ICollection<Vehicle> Vehicles { get; set; }
-    public ICollection<Travel> Travels { get; set; }
-    public ICollection<Evaluation> Evaluations { get; set; }
-    public ICollection<ChargingHistory> ChargingHistories { get; set; }
-    public ICollection<Booking> Bookings { get; set; }
+    public class SentimentData
+    {
+        public string Text { get; set; }
+    }
+
+    public class SentimentPrediction
+    {
+        public bool Prediction { get; set; }
+        public float Probability { get; set; }
+    }
+
+    public class ChargingHistoryData
+    {
+        public float Distance { get; set; }
+        public float BatteryLevel { get; set; }
+    }
+
+    public class ChargingRecommendation
+    {
+        public string StationId { get; set; }
+        public float Score { get; set; }
+    }
     
-    public User(string name, string email, string password, Blob profileImage, string createdAt, string lastLocation)
+    public User(string name, string email, string password, string profileImage, string createdAt, string lastLocation)
     {
         Name = name;
         Email = email;

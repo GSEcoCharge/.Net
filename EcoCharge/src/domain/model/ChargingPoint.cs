@@ -16,8 +16,6 @@ public class ChargingPoint
     public string Availability { get; set; }
     public bool Reservable { get; set; }
     
-    public ICollection<Booking> Bookings { get; set; }
-
     public ChargingPoint(string chargingStationId, string connectorType, int chargingSpeed, string availability, bool reservable)
     {
         ChargingStationId = chargingStationId;
