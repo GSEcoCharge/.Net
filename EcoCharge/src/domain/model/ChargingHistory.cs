@@ -16,6 +16,8 @@ public class ChargingHistory
     public string Date { get; set; }
     public string ConsumedEnergy { get; set; }
     public string AvoidedEmissions { get; set; }
+    
+    public ChargingHistory(){}
 
     public ChargingHistory(string userId, string chargingPointId, string date, string consumedEnergy, string avoidedEmissions)
     {

@@ -17,6 +17,8 @@ public class Evaluation
     public string Comment { get; set; }
     public string RatingDate { get; set; }
 
+    public Evaluation(){}
+    
     public Evaluation(string userId, string chargingPostId, string rating, string comment, string ratingDate)
     {
         UserId = userId;

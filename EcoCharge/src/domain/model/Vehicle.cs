@@ -18,6 +18,8 @@ public class Vehicle
     public string Year { get; set; }
     public string Autonomy { get; set; }
     public string ConnectorType { get; set; }
+    
+    public Vehicle(){}
 
     public Vehicle(int userId, string brand, string model, string year, string autonomy, string connectorType)
     {

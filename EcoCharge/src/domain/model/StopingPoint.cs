@@ -14,10 +14,12 @@ public class StopingPoint
     [Required]
     public string ChargingPointId { get; set; }
     public string Order { get; set; }
+    
+    public StopingPoint() { }
 
-    public StopingPoint(string userId, string chargingPointId, string order)
+    public StopingPoint(string travelId, string chargingPointId, string order)
     {
-        TravelId = userId;
+        TravelId = travelId;
         ChargingPointId = chargingPointId;
         Order = order;
     }

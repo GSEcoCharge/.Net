@@ -18,6 +18,8 @@ public class ChargingPost
     public string PaymentMethods { get; set; }
     public float AvarageRating { get; set; }
     
+    public ChargingPost(){}
+        
     public ChargingPost(string name, float latitude, float longitude, string address, string openHours, string paymentMethods, float avarageRating)
     {
         Name = name;

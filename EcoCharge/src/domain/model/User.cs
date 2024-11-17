@@ -43,6 +43,8 @@ public class User
         public float Score { get; set; }
     }
     
+    public User(){}
+    
     public User(string name, string email, string password, string profileImage, string createdAt, string lastLocation)
     {
         Name = name;

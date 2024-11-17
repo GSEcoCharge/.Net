@@ -16,6 +16,8 @@ public class Booking
     public string Date { get; set; }
     public string Status { get; set; }
 
+    public Booking(){}
+    
     public Booking(string userId, string chargingPointId, string date, string status)
     {
         UserId = userId;

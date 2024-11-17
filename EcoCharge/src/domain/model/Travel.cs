@@ -18,6 +18,8 @@ public class Travel
     public int RemainingAutonomy { get; set; }
     public string CreatedAt { get; set; }
     
+    public Travel(){}
+        
     public Travel(int userId, string startPoint, string endPoint, int remainingAutonomy, string createdAt)
     {
         UserId = userId;
