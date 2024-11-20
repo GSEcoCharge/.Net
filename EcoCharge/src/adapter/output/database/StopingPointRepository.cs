@@ -12,16 +12,9 @@ namespace EcoCharge.adapter.output.database
             _context = context;
         }
 
-        public StopingPoint FindById(int id)
+        public StopingPoint FindById(string id)
         {
-            var stopingPoint = _context.StopingPoints.FirstOrDefault(c => c.Id == id);
-
-            if (stopingPoint == null)
-            {
-                throw new KeyNotFoundException($"StopingPoint with ID {id} not found.");
-            }
-
-            return stopingPoint;
+            return _context.StopingPoints.FirstOrDefault(c => c.Id == id);
         }
 
         public void Create(StopingPoint stopingPoint)
@@ -30,7 +23,7 @@ namespace EcoCharge.adapter.output.database
             _context.SaveChanges();
         }
 
-        public StopingPoint Update(int id, StopingPoint stopingPoint)
+        public StopingPoint Update(string id, StopingPoint stopingPoint)
         {
             var existingStopingPoint = _context.StopingPoints.FirstOrDefault(c => c.Id == id);
 
@@ -49,7 +42,7 @@ namespace EcoCharge.adapter.output.database
             return existingStopingPoint;
         }
         
-        public void Delete(int id)
+        public void Delete(string id)
         {
             var stopingPoint = _context.StopingPoints.FirstOrDefault(c => c.Id == id);
 

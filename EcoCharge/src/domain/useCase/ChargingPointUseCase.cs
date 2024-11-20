@@ -15,7 +15,7 @@ namespace EcoCharge.domain.useCase
             _chargingPointRepository = chargingPointRepository;
         }
 
-        public ChargingPoint FindById(int id)
+        public ChargingPoint FindById(string id)
         {
             var chargingPoint = _chargingPointRepository.FindById(id);
 
@@ -39,7 +39,7 @@ namespace EcoCharge.domain.useCase
             _chargingPointRepository.Create(chargingPoint);
         }
 
-        public ChargingPoint Update(int id, ChargingPoint chargingPoint)
+        public ChargingPoint Update(string id, ChargingPoint chargingPoint)
         {
             var persistedChargingPoint = _chargingPointRepository.FindById(id);
 
@@ -53,7 +53,7 @@ namespace EcoCharge.domain.useCase
             return chargingPoint;
         }
 
-        public void Delete(int id)
+        public void Delete(string id)
         {
             var persistedChargingPoint = _chargingPointRepository.FindById(id);
 

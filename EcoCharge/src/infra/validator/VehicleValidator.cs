@@ -7,10 +7,6 @@ public class VehicleValidator : AbstractValidator<Vehicle>
 {
     public VehicleValidator()
     {
-        RuleFor(vehicle => vehicle.UserId)
-            .GreaterThan(0)
-            .WithMessage("UserId deve ser maior que zero.");
-
         RuleFor(vehicle => vehicle.Brand)
             .NotEmpty().WithMessage("Brand é obrigatório.")
             .Length(2, 50).WithMessage("Brand deve ter entre 2 e 50 caracteres.");
@@ -19,8 +15,8 @@ public class VehicleValidator : AbstractValidator<Vehicle>
             .NotEmpty().WithMessage("Model é obrigatório.")
             .Length(2, 50).WithMessage("Model deve ter entre 2 e 50 caracteres.");
 
-        RuleFor(vehicle => vehicle.Year)
-            .Matches(@"^\d{4}$").When(vehicle => !string.IsNullOrEmpty(vehicle.Year))
+        RuleFor(vehicle => vehicle.VehicleYear)
+            .Matches(@"^\d{4}$").When(vehicle => !string.IsNullOrEmpty(vehicle.VehicleYear))
             .WithMessage("Year deve ser um ano válido com 4 dígitos.");
 
         RuleFor(vehicle => vehicle.Autonomy)

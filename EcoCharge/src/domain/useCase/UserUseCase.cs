@@ -15,7 +15,7 @@ namespace EcoCharge.domain.useCase
             _userRepository = userRepository;
         }
 
-        public User FindById(int id)
+        public User FindById(string id)
         {
             var user = _userRepository.FindById(id);
 
@@ -36,10 +36,15 @@ namespace EcoCharge.domain.useCase
                 throw new AlreadyExistsException($"User with ID {user.Id} already exists.");
             }
 
+            if (string.IsNullOrEmpty(user.Id))
+            {
+                user.Id = Guid.NewGuid().ToString();
+            }
+
             _userRepository.Create(user);
         }
 
-        public User Update(int id, User user)
+        public User Update(string id, User user)
         {
             var persistedUser = _userRepository.FindById(id);
 
@@ -53,7 +58,7 @@ namespace EcoCharge.domain.useCase
             return user;
         }
 
-        public void Delete(int id)
+        public void Delete(string id)
         {
             var persistedUser = _userRepository.FindById(id);
 

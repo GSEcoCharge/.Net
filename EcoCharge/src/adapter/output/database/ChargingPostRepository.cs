@@ -12,16 +12,9 @@ namespace EcoCharge.adapter.output.database
             _context = context;
         }
 
-        public ChargingPost FindById(int id)
+        public ChargingPost FindById(string id)
         {
-            var chargingPost = _context.ChargingPosts.FirstOrDefault(c => c.Id == id);
-
-            if (chargingPost == null)
-            {
-                throw new KeyNotFoundException($"ChargingPost with ID {id} not found.");
-            }
-
-            return chargingPost;
+            return _context.ChargingPosts.FirstOrDefault(c => c.Id == id);
         }
 
         public void Create(ChargingPost chargingPost)
@@ -30,7 +23,7 @@ namespace EcoCharge.adapter.output.database
             _context.SaveChanges();
         }
 
-        public ChargingPost Update(int id, ChargingPost chargingPost)
+        public ChargingPost Update(string id, ChargingPost chargingPost)
         {
             var existingChargingPost = _context.ChargingPosts.FirstOrDefault(c => c.Id == id);
 
@@ -53,7 +46,7 @@ namespace EcoCharge.adapter.output.database
             return existingChargingPost;
         }
         
-        public void Delete(int id)
+        public void Delete(string id)
         {
             var chargingPost = _context.ChargingPosts.FirstOrDefault(c => c.Id == id);
 

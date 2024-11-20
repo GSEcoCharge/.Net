@@ -12,16 +12,9 @@ namespace EcoCharge.adapter.output.database
             _context = context;
         }
 
-        public User FindById(int id)
+        public User FindById(string id)
         {
-            var user = _context.Users.FirstOrDefault(c => c.Id == id);
-
-            if (user == null)
-            {
-                throw new KeyNotFoundException($"User with ID {id} not found.");
-            }
-
-            return user;
+            return  _context.Users.FirstOrDefault(c => c.Id == id);
         }
 
         public void Create(User user)
@@ -30,7 +23,7 @@ namespace EcoCharge.adapter.output.database
             _context.SaveChanges();
         }
 
-        public User Update(int id, User user)
+        public User Update(string id, User user)
         {
             var existingUser = _context.Users.FirstOrDefault(c => c.Id == id);
 
@@ -52,7 +45,7 @@ namespace EcoCharge.adapter.output.database
             return existingUser;
         }
         
-        public void Delete(int id)
+        public void Delete(string id)
         {
             var user = _context.Users.FirstOrDefault(c => c.Id == id);
 

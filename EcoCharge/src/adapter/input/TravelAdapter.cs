@@ -18,7 +18,7 @@ namespace EcoCharge.adapter.input
             _travelValidator = travelValidator;
         }
 
-        public Travel FindById(int id)
+        public Travel FindById(string id)
         {
             var travel = _travelUseCase.FindById(id);
     
@@ -36,13 +36,13 @@ namespace EcoCharge.adapter.input
             _travelUseCase.Create(travel);
         }
 
-        public Travel Update(int id, Travel travel)
+        public Travel Update(string id, Travel travel)
         {
             ValidateTravel(travel);
             return _travelUseCase.Update(id, travel);
         }
 
-        public void Delete(int id)
+        public void Delete(string id)
         {
             _travelUseCase.Delete(id);
         }

@@ -23,17 +23,14 @@ namespace EcoCharge.Migrations
 
             modelBuilder.Entity("EcoCharge.domain.model.Booking", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("NUMBER(10)");
+                    b.Property<string>("Id")
+                        .HasColumnType("NVARCHAR2(450)");
 
-                    OraclePropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("ChargingPointId")
+                    b.Property<string>("BookingDate")
                         .IsRequired()
                         .HasColumnType("NVARCHAR2(2000)");
 
-                    b.Property<string>("Date")
+                    b.Property<string>("ChargingPointId")
                         .IsRequired()
                         .HasColumnType("NVARCHAR2(2000)");
 
@@ -52,13 +49,14 @@ namespace EcoCharge.Migrations
 
             modelBuilder.Entity("EcoCharge.domain.model.ChargingHistory", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("NUMBER(10)");
-
-                    OraclePropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    b.Property<string>("Id")
+                        .HasColumnType("NVARCHAR2(450)");
 
                     b.Property<string>("AvoidedEmissions")
+                        .IsRequired()
+                        .HasColumnType("NVARCHAR2(2000)");
+
+                    b.Property<string>("ChargingHistoryDate")
                         .IsRequired()
                         .HasColumnType("NVARCHAR2(2000)");
 
@@ -67,10 +65,6 @@ namespace EcoCharge.Migrations
                         .HasColumnType("NVARCHAR2(2000)");
 
                     b.Property<string>("ConsumedEnergy")
-                        .IsRequired()
-                        .HasColumnType("NVARCHAR2(2000)");
-
-                    b.Property<string>("Date")
                         .IsRequired()
                         .HasColumnType("NVARCHAR2(2000)");
 
@@ -85,11 +79,8 @@ namespace EcoCharge.Migrations
 
             modelBuilder.Entity("EcoCharge.domain.model.ChargingPoint", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("NUMBER(10)");
-
-                    OraclePropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    b.Property<string>("Id")
+                        .HasColumnType("NVARCHAR2(450)");
 
                     b.Property<string>("Availability")
                         .IsRequired()
@@ -106,8 +97,8 @@ namespace EcoCharge.Migrations
                         .IsRequired()
                         .HasColumnType("NVARCHAR2(2000)");
 
-                    b.Property<bool>("Reservable")
-                        .HasColumnType("BOOLEAN");
+                    b.Property<int>("Reservable")
+                        .HasColumnType("NUMBER(10)");
 
                     b.HasKey("Id");
 
@@ -116,11 +107,8 @@ namespace EcoCharge.Migrations
 
             modelBuilder.Entity("EcoCharge.domain.model.ChargingPost", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("NUMBER(10)");
-
-                    OraclePropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    b.Property<string>("Id")
+                        .HasColumnType("NVARCHAR2(450)");
 
                     b.Property<string>("Address")
                         .IsRequired()
@@ -154,17 +142,14 @@ namespace EcoCharge.Migrations
 
             modelBuilder.Entity("EcoCharge.domain.model.Evaluation", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("NUMBER(10)");
-
-                    OraclePropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    b.Property<string>("Id")
+                        .HasColumnType("NVARCHAR2(450)");
 
                     b.Property<string>("ChargingPostId")
                         .IsRequired()
                         .HasColumnType("NVARCHAR2(2000)");
 
-                    b.Property<string>("Comment")
+                    b.Property<string>("EvaluationComment")
                         .IsRequired()
                         .HasColumnType("NVARCHAR2(2000)");
 
@@ -187,11 +172,8 @@ namespace EcoCharge.Migrations
 
             modelBuilder.Entity("EcoCharge.domain.model.StopingPoint", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("NUMBER(10)");
-
-                    OraclePropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    b.Property<string>("Id")
+                        .HasColumnType("NVARCHAR2(450)");
 
                     b.Property<string>("ChargingPointId")
                         .IsRequired()
@@ -212,11 +194,8 @@ namespace EcoCharge.Migrations
 
             modelBuilder.Entity("EcoCharge.domain.model.Travel", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("NUMBER(10)");
-
-                    OraclePropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    b.Property<string>("Id")
+                        .HasColumnType("NVARCHAR2(450)");
 
                     b.Property<string>("CreatedAt")
                         .IsRequired()
@@ -233,8 +212,9 @@ namespace EcoCharge.Migrations
                         .IsRequired()
                         .HasColumnType("NVARCHAR2(2000)");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("NUMBER(10)");
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("NVARCHAR2(2000)");
 
                     b.HasKey("Id");
 
@@ -243,11 +223,8 @@ namespace EcoCharge.Migrations
 
             modelBuilder.Entity("EcoCharge.domain.model.User", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("NUMBER(10)");
-
-                    OraclePropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    b.Property<string>("Id")
+                        .HasColumnType("NVARCHAR2(450)");
 
                     b.Property<string>("CreatedAt")
                         .IsRequired()
@@ -280,11 +257,8 @@ namespace EcoCharge.Migrations
 
             modelBuilder.Entity("EcoCharge.domain.model.Vehicle", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("NUMBER(10)");
-
-                    OraclePropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    b.Property<string>("Id")
+                        .HasColumnType("NVARCHAR2(450)");
 
                     b.Property<string>("Autonomy")
                         .IsRequired()
@@ -302,10 +276,11 @@ namespace EcoCharge.Migrations
                         .IsRequired()
                         .HasColumnType("NVARCHAR2(2000)");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("NUMBER(10)");
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("NVARCHAR2(2000)");
 
-                    b.Property<string>("Year")
+                    b.Property<string>("VehicleYear")
                         .IsRequired()
                         .HasColumnType("NVARCHAR2(2000)");
 

@@ -4,8 +4,8 @@ namespace EcoCharge.domain.repository;
 
 public interface IChargingPostRepository
 {
-    ChargingPost FindById(int id);
+    ChargingPost FindById(string id);
     void Create(ChargingPost chargingPost);
-    ChargingPost Update(int id, ChargingPost chargingPost);
-    void Delete(int id);
+    ChargingPost Update(string id, ChargingPost chargingPost);
+    void Delete(string id);
 }

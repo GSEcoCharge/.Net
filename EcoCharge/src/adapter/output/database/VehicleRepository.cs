@@ -12,16 +12,9 @@ namespace EcoCharge.adapter.output.database
             _context = context;
         }
 
-        public Vehicle FindById(int id)
+        public Vehicle FindById(string id)
         {
-            var vehicle = _context.Vehicles.FirstOrDefault(c => c.Id == id);
-
-            if (vehicle == null)
-            {
-                throw new KeyNotFoundException($"Vehicle with ID {id} not found.");
-            }
-
-            return vehicle;
+            return _context.Vehicles.FirstOrDefault(c => c.Id == id);
         }
 
         public void Create(Vehicle vehicle)
@@ -30,7 +23,7 @@ namespace EcoCharge.adapter.output.database
             _context.SaveChanges();
         }
 
-        public Vehicle Update(int id, Vehicle vehicle)
+        public Vehicle Update(string id, Vehicle vehicle)
         {
             var existingVehicle = _context.Vehicles.FirstOrDefault(c => c.Id == id);
 
@@ -42,7 +35,7 @@ namespace EcoCharge.adapter.output.database
             existingVehicle.UserId = vehicle.UserId;
             existingVehicle.Brand = vehicle.Brand;
             existingVehicle.Model = vehicle.Model;
-            existingVehicle.Year = vehicle.Year;
+            existingVehicle.VehicleYear = vehicle.VehicleYear;
             existingVehicle.Autonomy = vehicle.Autonomy;
             existingVehicle.ConnectorType = vehicle.ConnectorType;
 
@@ -52,7 +45,7 @@ namespace EcoCharge.adapter.output.database
             return existingVehicle;
         }
         
-        public void Delete(int id)
+        public void Delete(string id)
         {
             var vehicle = _context.Vehicles.FirstOrDefault(c => c.Id == id);
 

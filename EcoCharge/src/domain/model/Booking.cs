@@ -7,22 +7,25 @@ namespace EcoCharge.domain.model;
 public class Booking
 {
     [Key]
-    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    public int Id { get; init; }
+    public string Id { get; set; }
     [Required]
     public string UserId { get; set; }
     [Required]
     public string ChargingPointId { get; set; }
-    public string Date { get; set; }
+    public string BookingDate { get; set; }
     public string Status { get; set; }
 
-    public Booking(){}
-    
-    public Booking(string userId, string chargingPointId, string date, string status)
+    public Booking()
     {
+        Id = Guid.NewGuid().ToString();
+    }
+    
+    public Booking(string userId, string chargingPointId, string bookingDate, string status)
+    {
+        Id = Guid.NewGuid().ToString();
         UserId = userId;
         ChargingPointId = chargingPointId;
-        Date = date;
+        BookingDate = bookingDate;
         Status = status;
     }
 }

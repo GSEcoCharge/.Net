@@ -18,7 +18,7 @@ namespace EcoCharge.adapter.input
             _bookingValidator = bookingValidator;
         }
 
-        public Booking FindById(int id)
+        public Booking FindById(string id)
         {
             var booking = _bookingUseCase.FindById(id);
     
@@ -36,13 +36,13 @@ namespace EcoCharge.adapter.input
             _bookingUseCase.Create(booking);
         }
 
-        public Booking Update(int id, Booking booking)
+        public Booking Update(string id, Booking booking)
         {
             ValidateBooking(booking);
             return _bookingUseCase.Update(id, booking);
         }
 
-        public void Delete(int id)
+        public void Delete(string id)
         {
             _bookingUseCase.Delete(id);
         }

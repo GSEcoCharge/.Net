@@ -18,7 +18,7 @@ namespace EcoCharge.adapter.input
             _chargingHistoryValidator = chargingHistoryValidator;
         }
 
-        public ChargingHistory FindById(int id)
+        public ChargingHistory FindById(string id)
         {
             var chargingHistory = _chargingHistoryUseCase.FindById(id);
     
@@ -36,13 +36,13 @@ namespace EcoCharge.adapter.input
             _chargingHistoryUseCase.Create(chargingHistory);
         }
 
-        public ChargingHistory Update(int id, ChargingHistory chargingHistory)
+        public ChargingHistory Update(string id, ChargingHistory chargingHistory)
         {
             ValidateChargingHistory(chargingHistory);
             return _chargingHistoryUseCase.Update(id, chargingHistory);
         }
 
-        public void Delete(int id)
+        public void Delete(string id)
         {
             _chargingHistoryUseCase.Delete(id);
         }

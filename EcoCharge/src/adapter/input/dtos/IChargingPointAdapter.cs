@@ -4,8 +4,8 @@ namespace EcoCharge.adapter.input.dtos;
 
 public interface IChargingPointAdapter
 {
-    ChargingPoint FindById(int id);
+    ChargingPoint FindById(string id);
     void Create(ChargingPoint chargingPoint);
-    ChargingPoint Update(int id, ChargingPoint chargingPoint);
-    void Delete(int id);
+    ChargingPoint Update(string id, ChargingPoint chargingPoint);
+    void Delete(string id);
 }

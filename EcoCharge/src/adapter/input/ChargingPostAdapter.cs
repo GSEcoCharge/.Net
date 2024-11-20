@@ -18,7 +18,7 @@ namespace EcoCharge.adapter.input
             _chargingPostValidator = chargingPostValidator;
         }
 
-        public ChargingPost FindById(int id)
+        public ChargingPost FindById(string id)
         {
             var chargingPost = _chargingPostUseCase.FindById(id);
     
@@ -36,13 +36,13 @@ namespace EcoCharge.adapter.input
             _chargingPostUseCase.Create(chargingPost);
         }
 
-        public ChargingPost Update(int id, ChargingPost chargingPost)
+        public ChargingPost Update(string id, ChargingPost chargingPost)
         {
             ValidateChargingPost(chargingPost);
             return _chargingPostUseCase.Update(id, chargingPost);
         }
 
-        public void Delete(int id)
+        public void Delete(string id)
         {
             _chargingPostUseCase.Delete(id);
         }

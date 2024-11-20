@@ -9,19 +9,22 @@ namespace EcoCharge.domain.model;
 public class Travel
 {
     [Key]
-    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    public int Id { get; init; }
+    public string Id { get; set; }
     [Required]
-    public int UserId { get; set; }
+    public string UserId { get; set; }
     public string StartPoint { get; set; }
     public string EndPoint { get; set; }
     public int RemainingAutonomy { get; set; }
     public string CreatedAt { get; set; }
-    
-    public Travel(){}
-        
-    public Travel(int userId, string startPoint, string endPoint, int remainingAutonomy, string createdAt)
+
+    public Travel()
     {
+        Id = Guid.NewGuid().ToString();
+    }
+        
+    public Travel(string userId, string startPoint, string endPoint, int remainingAutonomy, string createdAt)
+    {
+        Id = Guid.NewGuid().ToString();
         UserId = userId;
         StartPoint = startPoint;
         EndPoint = endPoint;

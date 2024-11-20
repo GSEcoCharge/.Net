@@ -4,8 +4,8 @@ namespace EcoCharge.domain.useCase.dtos;
 
 public interface ITravelUseCase
 {
-    Travel FindById(int id);
+    Travel FindById(string id);
     void Create(Travel travel);
-    Travel Update(int id, Travel travel);
-    void Delete(int id);
+    Travel Update(string id, Travel travel);
+    void Delete(string id);
 }

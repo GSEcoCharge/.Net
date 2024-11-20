@@ -12,16 +12,9 @@ namespace EcoCharge.adapter.output.database
             _context = context;
         }
 
-        public Evaluation FindById(int id)
+        public Evaluation FindById(string id)
         {
-            var booking = _context.Evaluations.FirstOrDefault(c => c.Id == id);
-
-            if (booking == null)
-            {
-                throw new KeyNotFoundException($"Evaluation with ID {id} not found.");
-            }
-
-            return booking;
+            return _context.Evaluations.FirstOrDefault(c => c.Id == id);
         }
 
         public void Create(Evaluation booking)
@@ -30,7 +23,7 @@ namespace EcoCharge.adapter.output.database
             _context.SaveChanges();
         }
 
-        public Evaluation Update(int id, Evaluation booking)
+        public Evaluation Update(string id, Evaluation booking)
         {
             var existingEvaluation = _context.Evaluations.FirstOrDefault(c => c.Id == id);
 
@@ -42,7 +35,7 @@ namespace EcoCharge.adapter.output.database
             existingEvaluation.UserId = booking.UserId;
             existingEvaluation.ChargingPostId = booking.ChargingPostId;
             existingEvaluation.Rating = booking.Rating;
-            existingEvaluation.Comment = booking.Comment;
+            existingEvaluation.EvaluationComment = booking.EvaluationComment;
             existingEvaluation.RatingDate = booking.RatingDate;
 
             _context.Evaluations.Update(existingEvaluation);
@@ -51,7 +44,7 @@ namespace EcoCharge.adapter.output.database
             return existingEvaluation;
         }
         
-        public void Delete(int id)
+        public void Delete(string id)
         {
             var booking = _context.Evaluations.FirstOrDefault(c => c.Id == id);
 

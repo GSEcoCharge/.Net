@@ -7,24 +7,27 @@ namespace EcoCharge.domain.model;
 public class Evaluation
 {
     [Key]
-    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    public int Id { get; init; }
+    public string Id { get; set; }
     [Required]
     public string UserId { get; set; }
     [Required]
     public string ChargingPostId { get; set; }
     public string Rating { get; set; }
-    public string Comment { get; set; }
+    public string EvaluationComment { get; set; }
     public string RatingDate { get; set; }
 
-    public Evaluation(){}
-    
-    public Evaluation(string userId, string chargingPostId, string rating, string comment, string ratingDate)
+    public Evaluation()
     {
+        Id = Guid.NewGuid().ToString();
+    }
+    
+    public Evaluation(string userId, string chargingPostId, string rating, string evaluationComment, string ratingDate)
+    {
+        Id = Guid.NewGuid().ToString();
         UserId = userId;
         ChargingPostId = chargingPostId;
         Rating = rating;
-        Comment = comment;
+        EvaluationComment = evaluationComment;
         RatingDate = ratingDate;
     }
 }

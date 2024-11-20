@@ -19,7 +19,7 @@ public class UserUseCaseTests
     [Fact]
     public void FindById_ShouldReturnUser_WhenUserExists()
     {
-        var userId = 1;
+        var userId = "1";
         var user = new User("Test", "test@example.com", "password", null, "2024-11-15", "Location");
         _mockRepository.Setup(repo => repo.FindById(userId)).Returns(user);
 
@@ -31,7 +31,7 @@ public class UserUseCaseTests
     [Fact]
     public void FindById_ShouldThrowNotFoundException_WhenUserDoesNotExist()
     {
-        var userId = 1;
+        var userId = "1";
 
         _mockRepository
             .Setup(repo => repo.FindById(userId))

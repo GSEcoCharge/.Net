@@ -8,8 +8,7 @@ namespace EcoCharge.domain.model;
 public class User
 {
     [Key]
-    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    public int Id { get; init; }
+    public string Id { get; set; }
     [Required]
     public string Name { get; set; }
     [Required]
@@ -42,11 +41,15 @@ public class User
         public string StationId { get; set; }
         public float Score { get; set; }
     }
-    
-    public User(){}
+
+    public User()
+    {
+        Id = Guid.NewGuid().ToString();
+    }
     
     public User(string name, string email, string password, string profileImage, string createdAt, string lastLocation)
     {
+        Id = Guid.NewGuid().ToString();
         Name = name;
         Email = email;
         Password = password;

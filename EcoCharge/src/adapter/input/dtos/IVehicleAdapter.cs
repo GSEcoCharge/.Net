@@ -4,8 +4,8 @@ namespace EcoCharge.adapter.input.dtos;
 
 public interface IVehicleAdapter
 {
-    Vehicle FindById(int id);
+    Vehicle FindById(string id);
     void Create(Vehicle vehicle);
-    Vehicle Update(int id, Vehicle vehicle);
-    void Delete(int id);
+    Vehicle Update(string id, Vehicle vehicle);
+    void Delete(string id);
 }

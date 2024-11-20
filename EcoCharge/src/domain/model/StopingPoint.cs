@@ -7,18 +7,21 @@ namespace EcoCharge.domain.model;
 public class StopingPoint
 {
     [Key]
-    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    public int Id { get; init; }
+    public string Id { get; set; }
     [Required]
     public string TravelId { get; set; }
     [Required]
     public string ChargingPointId { get; set; }
     public string Order { get; set; }
-    
-    public StopingPoint() { }
+
+    public StopingPoint()
+    {
+        Id = Guid.NewGuid().ToString();
+    }
 
     public StopingPoint(string travelId, string chargingPointId, string order)
     {
+        Id = Guid.NewGuid().ToString();
         TravelId = travelId;
         ChargingPointId = chargingPointId;
         Order = order;

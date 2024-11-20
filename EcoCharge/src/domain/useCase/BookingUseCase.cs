@@ -15,7 +15,7 @@ namespace EcoCharge.domain.useCase
             _bookingRepository = bookingRepository;
         }
 
-        public Booking FindById(int id)
+        public Booking FindById(string id)
         {
             var booking = _bookingRepository.FindById(id);
 
@@ -39,7 +39,7 @@ namespace EcoCharge.domain.useCase
             _bookingRepository.Create(booking);
         }
 
-        public Booking Update(int id, Booking booking)
+        public Booking Update(string id, Booking booking)
         {
             var persistedBooking = _bookingRepository.FindById(id);
 
@@ -53,7 +53,7 @@ namespace EcoCharge.domain.useCase
             return booking;
         }
 
-        public void Delete(int id)
+        public void Delete(string id)
         {
             var persistedBooking = _bookingRepository.FindById(id);
 

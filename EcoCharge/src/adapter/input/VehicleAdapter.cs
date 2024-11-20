@@ -17,7 +17,7 @@ namespace EcoCharge.adapter.input
             _vehicleValidator = vehicleValidator;
         }
 
-        public Vehicle FindById(int id)
+        public Vehicle FindById(string id)
         {
             var vehicle = _vehicleUseCase.FindById(id);
     
@@ -35,13 +35,13 @@ namespace EcoCharge.adapter.input
             _vehicleUseCase.Create(vehicle);
         }
 
-        public Vehicle Update(int id, Vehicle vehicle)
+        public Vehicle Update(string id, Vehicle vehicle)
         {
             ValidateVehicle(vehicle);
             return _vehicleUseCase.Update(id, vehicle);
         }
 
-        public void Delete(int id)
+        public void Delete(string id)
         {
             _vehicleUseCase.Delete(id);
         }

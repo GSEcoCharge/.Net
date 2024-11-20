@@ -7,19 +7,22 @@ namespace EcoCharge.domain.model;
 public class ChargingPoint
 {
     [Key]
-    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    public int Id { get; init; }
+    public string Id { get; set; }
     [Required]
     public string ChargingStationId { get; set; }
     public string ConnectorType { get; set; }
     public int ChargingSpeed { get; set; }
     public string Availability { get; set; }
-    public bool Reservable { get; set; }
-    
-    public ChargingPoint(){}
-    
-    public ChargingPoint(string chargingStationId, string connectorType, int chargingSpeed, string availability, bool reservable)
+    public int Reservable { get; set; }
+
+    public ChargingPoint()
     {
+        Id = Guid.NewGuid().ToString();
+    }
+    
+    public ChargingPoint(string chargingStationId, string connectorType, int chargingSpeed, string availability, int reservable)
+    {
+        Id = Guid.NewGuid().ToString();
         ChargingStationId = chargingStationId;
         ConnectorType = connectorType;
         ChargingSpeed = chargingSpeed;

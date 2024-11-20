@@ -17,7 +17,7 @@ namespace EcoCharge.app.controller
         }
 
         [HttpGet("{id}")]
-        public ActionResult<StopingPoint> FindById(int id)
+        public ActionResult<StopingPoint> FindById(string id)
         {
             try
             {
@@ -57,7 +57,7 @@ namespace EcoCharge.app.controller
         }
 
         [HttpPut("{id}")]
-        public ActionResult<StopingPoint> Update(int id, [FromBody] StopingPoint stopingPoint)
+        public ActionResult<StopingPoint> Update(string id, [FromBody] StopingPoint stopingPoint)
         {
             try
             {
@@ -83,7 +83,7 @@ namespace EcoCharge.app.controller
         }
 
         [HttpDelete("{id}")]
-        public IActionResult Delete(int id)
+        public IActionResult Delete(string id)
         {
             try
             {

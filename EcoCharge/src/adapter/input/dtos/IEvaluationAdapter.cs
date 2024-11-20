@@ -4,8 +4,8 @@ namespace EcoCharge.adapter.input.dtos;
 
 public interface IEvaluationAdapter
 {
-    Evaluation FindById(int id);
+    Evaluation FindById(string id);
     void Create(Evaluation evaluation);
-    Evaluation Update(int id, Evaluation evaluation);
-    void Delete(int id);
+    Evaluation Update(string id, Evaluation evaluation);
+    void Delete(string id);
 }

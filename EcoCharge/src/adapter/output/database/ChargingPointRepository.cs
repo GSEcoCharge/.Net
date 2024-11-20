@@ -12,16 +12,9 @@ namespace EcoCharge.adapter.output.database
             _context = context;
         }
 
-        public ChargingPoint FindById(int id)
+        public ChargingPoint FindById(string id)
         {
-            var chargingPoint = _context.ChargingPoints.FirstOrDefault(c => c.Id == id);
-
-            if (chargingPoint == null)
-            {
-                throw new KeyNotFoundException($"ChargingPoint with ID {id} not found.");
-            }
-
-            return chargingPoint;
+            return _context.ChargingPoints.FirstOrDefault(c => c.Id == id);
         }
 
         public void Create(ChargingPoint chargingPoint)
@@ -30,7 +23,7 @@ namespace EcoCharge.adapter.output.database
             _context.SaveChanges();
         }
 
-        public ChargingPoint Update(int id, ChargingPoint chargingPoint)
+        public ChargingPoint Update(string id, ChargingPoint chargingPoint)
         {
             var existingChargingPoint = _context.ChargingPoints.FirstOrDefault(c => c.Id == id);
 
@@ -51,7 +44,7 @@ namespace EcoCharge.adapter.output.database
             return existingChargingPoint;
         }
         
-        public void Delete(int id)
+        public void Delete(string id)
         {
             var chargingPoint = _context.ChargingPoints.FirstOrDefault(c => c.Id == id);
 

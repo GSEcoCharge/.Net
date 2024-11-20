@@ -15,7 +15,7 @@ namespace EcoCharge.domain.useCase
             _chargingPostRepository = chargingPostRepository;
         }
 
-        public ChargingPost FindById(int id)
+        public ChargingPost FindById(string id)
         {
             var chargingPost = _chargingPostRepository.FindById(id);
 
@@ -39,7 +39,7 @@ namespace EcoCharge.domain.useCase
             _chargingPostRepository.Create(chargingPost);
         }
 
-        public ChargingPost Update(int id, ChargingPost chargingPost)
+        public ChargingPost Update(string id, ChargingPost chargingPost)
         {
             var persistedChargingPost = _chargingPostRepository.FindById(id);
 
@@ -53,7 +53,7 @@ namespace EcoCharge.domain.useCase
             return chargingPost;
         }
 
-        public void Delete(int id)
+        public void Delete(string id)
         {
             var persistedChargingPost = _chargingPostRepository.FindById(id);
 

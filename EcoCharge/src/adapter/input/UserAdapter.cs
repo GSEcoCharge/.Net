@@ -18,7 +18,7 @@ namespace EcoCharge.adapter.input
             _userValidator = userValidator;
         }
 
-        public User FindById(int id)
+        public User FindById(string id)
         {
             var user = _userUseCase.FindById(id);
     
@@ -36,13 +36,13 @@ namespace EcoCharge.adapter.input
             _userUseCase.Create(user);
         }
 
-        public User Update(int id, User user)
+        public User Update(string id, User user)
         {
             ValidateUser(user);
             return _userUseCase.Update(id, user);
         }
 
-        public void Delete(int id)
+        public void Delete(string id)
         {
             _userUseCase.Delete(id);
         }

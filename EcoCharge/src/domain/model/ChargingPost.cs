@@ -7,8 +7,7 @@ namespace EcoCharge.domain.model;
 public class ChargingPost
 {
     [Key]
-    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    public int Id { get; init; }
+    public string Id { get; set; }
     [Required]
     public string Name { get; set; }
     public float Latitude { get; set; }
@@ -17,11 +16,15 @@ public class ChargingPost
     public string OpenHours { get; set; }
     public string PaymentMethods { get; set; }
     public float AvarageRating { get; set; }
-    
-    public ChargingPost(){}
+
+    public ChargingPost()
+    {
+        Id = Guid.NewGuid().ToString();
+    }
         
     public ChargingPost(string name, float latitude, float longitude, string address, string openHours, string paymentMethods, float avarageRating)
     {
+        Id = Guid.NewGuid().ToString();
         Name = name;
         Latitude = latitude;
         Longitude = longitude;

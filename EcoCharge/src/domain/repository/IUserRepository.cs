@@ -4,8 +4,8 @@ namespace EcoCharge.domain.repository;
 
 public interface IUserRepository
 {
-    User FindById(int id);
+    User FindById(string id);
     void Create(User user);
-    User Update(int id, User user);
-    void Delete(int id);
+    User Update(string id, User user);
+    void Delete(string id);
 }

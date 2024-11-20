@@ -17,7 +17,7 @@ public class EvaluationValidator : AbstractValidator<Evaluation>
             .Matches(@"^[1-5]$").When(evaluation => !string.IsNullOrEmpty(evaluation.Rating))
             .WithMessage("Rating deve estar entre 1 e 5.");
 
-        RuleFor(evaluation => evaluation.Comment)
+        RuleFor(evaluation => evaluation.EvaluationComment)
             .MaximumLength(200).WithMessage("Comment deve ter no máximo 200 caracteres.");
 
         RuleFor(evaluation => evaluation.RatingDate)

@@ -15,7 +15,7 @@ namespace EcoCharge.domain.useCase
             _evaluationRepository = evaluationRepository;
         }
 
-        public Evaluation FindById(int id)
+        public Evaluation FindById(string id)
         {
             var evaluation = _evaluationRepository.FindById(id);
 
@@ -39,7 +39,7 @@ namespace EcoCharge.domain.useCase
             _evaluationRepository.Create(evaluation);
         }
 
-        public Evaluation Update(int id, Evaluation evaluation)
+        public Evaluation Update(string id, Evaluation evaluation)
         {
             var persistedEvaluation = _evaluationRepository.FindById(id);
 
@@ -53,7 +53,7 @@ namespace EcoCharge.domain.useCase
             return evaluation;
         }
 
-        public void Delete(int id)
+        public void Delete(string id)
         {
             var persistedEvaluation = _evaluationRepository.FindById(id);
 

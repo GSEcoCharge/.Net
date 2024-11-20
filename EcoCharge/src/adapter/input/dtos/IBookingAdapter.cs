@@ -4,8 +4,8 @@ namespace EcoCharge.adapter.input.dtos;
 
 public interface IBookingAdapter
 {
-    Booking FindById(int id);
+    Booking FindById(string id);
     void Create(Booking booking);
-    Booking Update(int id, Booking booking);
-    void Delete(int id);
+    Booking Update(string id, Booking booking);
+    void Delete(string id);
 }

@@ -4,8 +4,8 @@ namespace EcoCharge.adapter.input.dtos;
 
 public interface IStopingPointAdapter
 {
-    StopingPoint FindById(int id);
+    StopingPoint FindById(string id);
     void Create(StopingPoint stopingPoint);
-    StopingPoint Update(int id, StopingPoint stopingPoint);
-    void Delete(int id);
+    StopingPoint Update(string id, StopingPoint stopingPoint);
+    void Delete(string id);
 }

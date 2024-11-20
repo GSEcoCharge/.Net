@@ -21,7 +21,7 @@ public class UserControllerTests
     [Fact]
     public void FindById_ShouldReturnOk_WhenUserExists()
     {
-        var userId = 1;
+        var userId = "1";
         var user = new User("Test", "test@example.com", "password", null, "2024-11-15", "Location");
         _mockUserAdapter.Setup(adapter => adapter.FindById(userId)).Returns(user);
 
@@ -34,7 +34,7 @@ public class UserControllerTests
     [Fact]
     public void FindById_ShouldReturnNotFound_WhenUserDoesNotExist()
     {
-        var userId = 1;
+        var userId = "1";
         _mockUserAdapter.Setup(adapter => adapter.FindById(userId)).Throws(new NotFoundException("User not found"));
 
         var result = _controller.FindById(userId);

@@ -20,7 +20,7 @@ namespace EcoCharge.app.controllerk
         }
 
         [HttpGet("{id}")]
-        public ActionResult<User> FindById(int id)
+        public ActionResult<User> FindById(string id)
         {
             try
             {
@@ -60,7 +60,7 @@ namespace EcoCharge.app.controllerk
         }
 
         [HttpPut("{id}")]
-        public ActionResult<User> Update(int id, [FromBody] User user)
+        public ActionResult<User> Update(string id, [FromBody] User user)
         {
             try
             {
@@ -86,7 +86,7 @@ namespace EcoCharge.app.controllerk
         }
 
         [HttpDelete("{id}")]
-        public IActionResult Delete(int id)
+        public IActionResult Delete(string id)
         {
             try
             {
@@ -134,7 +134,7 @@ namespace EcoCharge.app.controllerk
         }
 
         [HttpGet("{id}/recommend-charging")]
-        public ActionResult RecommendChargingStations(int id)
+        public ActionResult RecommendChargingStations(string id)
         {
             try
             {

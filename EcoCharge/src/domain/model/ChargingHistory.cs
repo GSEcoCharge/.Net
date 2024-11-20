@@ -7,23 +7,26 @@ namespace EcoCharge.domain.model;
 public class ChargingHistory
 {
     [Key]
-    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    public int Id { get; init; }
+    public string Id { get; set; }
     [Required]
     public string UserId { get; set; }
     [Required]
     public string ChargingPointId { get; set; }
-    public string Date { get; set; }
+    public string ChargingHistoryDate { get; set; }
     public string ConsumedEnergy { get; set; }
     public string AvoidedEmissions { get; set; }
-    
-    public ChargingHistory(){}
 
-    public ChargingHistory(string userId, string chargingPointId, string date, string consumedEnergy, string avoidedEmissions)
+    public ChargingHistory()
     {
+        Id = Guid.NewGuid().ToString();
+    }
+
+    public ChargingHistory(string userId, string chargingPointId, string chargingHistoryDate, string consumedEnergy, string avoidedEmissions)
+    {
+        Id = Guid.NewGuid().ToString();
         UserId = userId;
         ChargingPointId = chargingPointId;
-        Date = date;
+        ChargingHistoryDate = chargingHistoryDate;
         ConsumedEnergy = consumedEnergy;
         AvoidedEmissions = avoidedEmissions;
     }

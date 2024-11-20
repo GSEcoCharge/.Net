@@ -17,7 +17,7 @@ namespace EcoCharge.app.controller
         }
 
         [HttpGet("{id}")]
-        public ActionResult<ChargingPoint> FindById(int id)
+        public ActionResult<ChargingPoint> FindById(string id)
         {
             try
             {
@@ -57,7 +57,7 @@ namespace EcoCharge.app.controller
         }
 
         [HttpPut("{id}")]
-        public ActionResult<ChargingPoint> Update(int id, [FromBody] ChargingPoint chargingPoint)
+        public ActionResult<ChargingPoint> Update(string id, [FromBody] ChargingPoint chargingPoint)
         {
             try
             {
@@ -83,7 +83,7 @@ namespace EcoCharge.app.controller
         }
 
         [HttpDelete("{id}")]
-        public IActionResult Delete(int id)
+        public IActionResult Delete(string id)
         {
             try
             {

@@ -7,26 +7,29 @@ namespace EcoCharge.domain.model;
 public class Vehicle
 {
     [Key]
-    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    public int Id { get; init; }
+    public string Id { get; set; }
     [Required]
-    public int UserId { get; set; }
+    public string UserId { get; set; }
     [Required]
     public string Brand { get; set; }
     [Required]
     public string Model { get; set; }
-    public string Year { get; set; }
+    public string VehicleYear { get; set; }
     public string Autonomy { get; set; }
     public string ConnectorType { get; set; }
-    
-    public Vehicle(){}
 
-    public Vehicle(int userId, string brand, string model, string year, string autonomy, string connectorType)
+    public Vehicle()
     {
+        Id = Guid.NewGuid().ToString();
+    }
+
+    public Vehicle(string userId, string brand, string model, string vehicleYear, string autonomy, string connectorType)
+    {
+        Id = Guid.NewGuid().ToString();
         UserId = userId;
         Brand = brand;
         Model = model;
-        Year = year;
+        VehicleYear = vehicleYear;
         Autonomy = autonomy;
         ConnectorType = connectorType;
     }

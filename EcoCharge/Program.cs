@@ -20,7 +20,7 @@ DotNetEnv.Env.Load();
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
     options.UseOracle(
-        "Data Source=(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=oracle.fiap.com.br)(PORT=1521)))\n(CONNECT_DATA=(SERVER=DEDICATED)(SID=ORCL)));User Id=RM97707;Password=220600;");
+        "Data Source=(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=oracle.fiap.com.br)(PORT=1521)))\n(CONNECT_DATA=(SERVER=DEDICATED)(SID=ORCL)));User Id=RM551423;Password=261204;");
 });
 
 builder.Services.AddControllers();

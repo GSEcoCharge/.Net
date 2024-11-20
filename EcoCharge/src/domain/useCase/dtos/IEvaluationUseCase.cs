@@ -4,8 +4,8 @@ namespace EcoCharge.domain.useCase.dtos;
 
 public interface IEvaluationUseCase
 {
-    Evaluation FindById(int id);
+    Evaluation FindById(string id);
     void Create(Evaluation evaluation);
-    Evaluation Update(int id, Evaluation evaluation);
-    void Delete(int id);
+    Evaluation Update(string id, Evaluation evaluation);
+    void Delete(string id);
 }

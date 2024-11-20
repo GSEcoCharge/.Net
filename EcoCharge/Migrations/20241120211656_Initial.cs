@@ -14,11 +14,10 @@ namespace EcoCharge.Migrations
                 name: "GS_BOOKING",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "NUMBER(10)", nullable: false)
-                        .Annotation("Oracle:Identity", "START WITH 1 INCREMENT BY 1"),
+                    Id = table.Column<string>(type: "NVARCHAR2(450)", nullable: false),
                     UserId = table.Column<string>(type: "NVARCHAR2(2000)", nullable: false),
                     ChargingPointId = table.Column<string>(type: "NVARCHAR2(2000)", nullable: false),
-                    Date = table.Column<string>(type: "NVARCHAR2(2000)", nullable: false),
+                    BookingDate = table.Column<string>(type: "NVARCHAR2(2000)", nullable: false),
                     Status = table.Column<string>(type: "NVARCHAR2(2000)", nullable: false)
                 },
                 constraints: table =>
@@ -30,11 +29,10 @@ namespace EcoCharge.Migrations
                 name: "GS_CHARGING_HISTORY",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "NUMBER(10)", nullable: false)
-                        .Annotation("Oracle:Identity", "START WITH 1 INCREMENT BY 1"),
+                    Id = table.Column<string>(type: "NVARCHAR2(450)", nullable: false),
                     UserId = table.Column<string>(type: "NVARCHAR2(2000)", nullable: false),
                     ChargingPointId = table.Column<string>(type: "NVARCHAR2(2000)", nullable: false),
-                    Date = table.Column<string>(type: "NVARCHAR2(2000)", nullable: false),
+                    ChargingHistoryDate = table.Column<string>(type: "NVARCHAR2(2000)", nullable: false),
                     ConsumedEnergy = table.Column<string>(type: "NVARCHAR2(2000)", nullable: false),
                     AvoidedEmissions = table.Column<string>(type: "NVARCHAR2(2000)", nullable: false)
                 },
@@ -47,13 +45,12 @@ namespace EcoCharge.Migrations
                 name: "GS_CHARGING_POINT",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "NUMBER(10)", nullable: false)
-                        .Annotation("Oracle:Identity", "START WITH 1 INCREMENT BY 1"),
+                    Id = table.Column<string>(type: "NVARCHAR2(450)", nullable: false),
                     ChargingStationId = table.Column<string>(type: "NVARCHAR2(2000)", nullable: false),
                     ConnectorType = table.Column<string>(type: "NVARCHAR2(2000)", nullable: false),
                     ChargingSpeed = table.Column<int>(type: "NUMBER(10)", nullable: false),
                     Availability = table.Column<string>(type: "NVARCHAR2(2000)", nullable: false),
-                    Reservable = table.Column<bool>(type: "BOOLEAN", nullable: false)
+                    Reservable = table.Column<int>(type: "NUMBER(10)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -64,8 +61,7 @@ namespace EcoCharge.Migrations
                 name: "GS_CHARGING_POST",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "NUMBER(10)", nullable: false)
-                        .Annotation("Oracle:Identity", "START WITH 1 INCREMENT BY 1"),
+                    Id = table.Column<string>(type: "NVARCHAR2(450)", nullable: false),
                     Name = table.Column<string>(type: "NVARCHAR2(2000)", nullable: false),
                     Latitude = table.Column<float>(type: "BINARY_FLOAT", nullable: false),
                     Longitude = table.Column<float>(type: "BINARY_FLOAT", nullable: false),
@@ -83,12 +79,11 @@ namespace EcoCharge.Migrations
                 name: "GS_EVALUATION",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "NUMBER(10)", nullable: false)
-                        .Annotation("Oracle:Identity", "START WITH 1 INCREMENT BY 1"),
+                    Id = table.Column<string>(type: "NVARCHAR2(450)", nullable: false),
                     UserId = table.Column<string>(type: "NVARCHAR2(2000)", nullable: false),
                     ChargingPostId = table.Column<string>(type: "NVARCHAR2(2000)", nullable: false),
                     Rating = table.Column<string>(type: "NVARCHAR2(2000)", nullable: false),
-                    Comment = table.Column<string>(type: "NVARCHAR2(2000)", nullable: false),
+                    EvaluationComment = table.Column<string>(type: "NVARCHAR2(2000)", nullable: false),
                     RatingDate = table.Column<string>(type: "NVARCHAR2(2000)", nullable: false)
                 },
                 constraints: table =>
@@ -100,8 +95,7 @@ namespace EcoCharge.Migrations
                 name: "GS_STOPING_POINT",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "NUMBER(10)", nullable: false)
-                        .Annotation("Oracle:Identity", "START WITH 1 INCREMENT BY 1"),
+                    Id = table.Column<string>(type: "NVARCHAR2(450)", nullable: false),
                     TravelId = table.Column<string>(type: "NVARCHAR2(2000)", nullable: false),
                     ChargingPointId = table.Column<string>(type: "NVARCHAR2(2000)", nullable: false),
                     Order = table.Column<string>(type: "NVARCHAR2(2000)", nullable: false)
@@ -115,9 +109,8 @@ namespace EcoCharge.Migrations
                 name: "GS_TRAVEL",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "NUMBER(10)", nullable: false)
-                        .Annotation("Oracle:Identity", "START WITH 1 INCREMENT BY 1"),
-                    UserId = table.Column<int>(type: "NUMBER(10)", nullable: false),
+                    Id = table.Column<string>(type: "NVARCHAR2(450)", nullable: false),
+                    UserId = table.Column<string>(type: "NVARCHAR2(2000)", nullable: false),
                     StartPoint = table.Column<string>(type: "NVARCHAR2(2000)", nullable: false),
                     EndPoint = table.Column<string>(type: "NVARCHAR2(2000)", nullable: false),
                     RemainingAutonomy = table.Column<int>(type: "NUMBER(10)", nullable: false),
@@ -132,8 +125,7 @@ namespace EcoCharge.Migrations
                 name: "GS_USER",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "NUMBER(10)", nullable: false)
-                        .Annotation("Oracle:Identity", "START WITH 1 INCREMENT BY 1"),
+                    Id = table.Column<string>(type: "NVARCHAR2(450)", nullable: false),
                     Name = table.Column<string>(type: "NVARCHAR2(2000)", nullable: false),
                     Email = table.Column<string>(type: "NVARCHAR2(2000)", nullable: false),
                     Password = table.Column<string>(type: "NVARCHAR2(2000)", nullable: false),
@@ -150,12 +142,11 @@ namespace EcoCharge.Migrations
                 name: "GS_VEHICLE",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "NUMBER(10)", nullable: false)
-                        .Annotation("Oracle:Identity", "START WITH 1 INCREMENT BY 1"),
-                    UserId = table.Column<int>(type: "NUMBER(10)", nullable: false),
+                    Id = table.Column<string>(type: "NVARCHAR2(450)", nullable: false),
+                    UserId = table.Column<string>(type: "NVARCHAR2(2000)", nullable: false),
                     Brand = table.Column<string>(type: "NVARCHAR2(2000)", nullable: false),
                     Model = table.Column<string>(type: "NVARCHAR2(2000)", nullable: false),
-                    Year = table.Column<string>(type: "NVARCHAR2(2000)", nullable: false),
+                    VehicleYear = table.Column<string>(type: "NVARCHAR2(2000)", nullable: false),
                     Autonomy = table.Column<string>(type: "NVARCHAR2(2000)", nullable: false),
                     ConnectorType = table.Column<string>(type: "NVARCHAR2(2000)", nullable: false)
                 },

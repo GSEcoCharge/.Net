@@ -18,7 +18,7 @@ namespace EcoCharge.adapter.input
             _chargingPointValidator = chargingPointValidator;
         }
 
-        public ChargingPoint FindById(int id)
+        public ChargingPoint FindById(string id)
         {
             var chargingPoint = _chargingPointUseCase.FindById(id);
     
@@ -36,13 +36,13 @@ namespace EcoCharge.adapter.input
             _chargingPointUseCase.Create(chargingPoint);
         }
 
-        public ChargingPoint Update(int id, ChargingPoint chargingPoint)
+        public ChargingPoint Update(string id, ChargingPoint chargingPoint)
         {
             ValidateChargingPoint(chargingPoint);
             return _chargingPointUseCase.Update(id, chargingPoint);
         }
 
-        public void Delete(int id)
+        public void Delete(string id)
         {
             _chargingPointUseCase.Delete(id);
         }

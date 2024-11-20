@@ -12,16 +12,9 @@ namespace EcoCharge.adapter.output.database
             _context = context;
         }
 
-        public Travel FindById(int id)
+        public Travel FindById(string id)
         {
-            var user = _context.Travels.FirstOrDefault(c => c.Id == id);
-
-            if (user == null)
-            {
-                throw new KeyNotFoundException($"Travel with ID {id} not found.");
-            }
-
-            return user;
+            return _context.Travels.FirstOrDefault(c => c.Id == id);
         }
 
         public void Create(Travel user)
@@ -30,7 +23,7 @@ namespace EcoCharge.adapter.output.database
             _context.SaveChanges();
         }
 
-        public Travel Update(int id, Travel user)
+        public Travel Update(string id, Travel user)
         {
             var existingTravel = _context.Travels.FirstOrDefault(c => c.Id == id);
 
@@ -51,7 +44,7 @@ namespace EcoCharge.adapter.output.database
             return existingTravel;
         }
         
-        public void Delete(int id)
+        public void Delete(string id)
         {
             var user = _context.Travels.FirstOrDefault(c => c.Id == id);
 

@@ -12,16 +12,9 @@ namespace EcoCharge.adapter.output.database
             _context = context;
         }
 
-        public ChargingHistory FindById(int id)
+        public ChargingHistory FindById(string id)
         {
-            var chargingHistory = _context.ChargingHistories.FirstOrDefault(c => c.Id == id);
-
-            if (chargingHistory == null)
-            {
-                throw new KeyNotFoundException($"ChargingHistory with ID {id} not found.");
-            }
-
-            return chargingHistory;
+            return _context.ChargingHistories.FirstOrDefault(c => c.Id == id);
         }
 
         public void Create(ChargingHistory chargingHistory)
@@ -30,7 +23,7 @@ namespace EcoCharge.adapter.output.database
             _context.SaveChanges();
         }
 
-        public ChargingHistory Update(int id, ChargingHistory chargingHistory)
+        public ChargingHistory Update(string id, ChargingHistory chargingHistory)
         {
             var existingChargingHistory = _context.ChargingHistories.FirstOrDefault(c => c.Id == id);
 
@@ -41,7 +34,7 @@ namespace EcoCharge.adapter.output.database
 
             existingChargingHistory.UserId = chargingHistory.UserId;
             existingChargingHistory.ChargingPointId = chargingHistory.ChargingPointId;
-            existingChargingHistory.Date = chargingHistory.Date;
+            existingChargingHistory.ChargingHistoryDate = chargingHistory.ChargingHistoryDate;
             existingChargingHistory.ConsumedEnergy = chargingHistory.ConsumedEnergy;
             existingChargingHistory.AvoidedEmissions = chargingHistory.AvoidedEmissions;
 
@@ -51,7 +44,7 @@ namespace EcoCharge.adapter.output.database
             return existingChargingHistory;
         }
         
-        public void Delete(int id)
+        public void Delete(string id)
         {
             var chargingHistory = _context.ChargingHistories.FirstOrDefault(c => c.Id == id);
 

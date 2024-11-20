@@ -14,7 +14,7 @@ namespace EcoCharge.domain.useCase
             _vehicleRepository = vehicleRepository;
         }
 
-        public Vehicle FindById(int id)
+        public Vehicle FindById(string id)
         {
             var vehicle = _vehicleRepository.FindById(id);
 
@@ -38,7 +38,7 @@ namespace EcoCharge.domain.useCase
             _vehicleRepository.Create(vehicle);
         }
 
-        public Vehicle Update(int id, Vehicle vehicle)
+        public Vehicle Update(string id, Vehicle vehicle)
         {
             var persistedVehicle = _vehicleRepository.FindById(id);
 
@@ -52,7 +52,7 @@ namespace EcoCharge.domain.useCase
             return vehicle;
         }
 
-        public void Delete(int id)
+        public void Delete(string id)
         {
             var persistedVehicle = _vehicleRepository.FindById(id);
 

@@ -7,9 +7,6 @@ public class TravelValidator : AbstractValidator<Travel>
 {
     public TravelValidator()
     {
-        RuleFor(travel => travel.UserId)
-            .GreaterThan(0).WithMessage("UserId deve ser maior que zero.");
-
         RuleFor(travel => travel.StartPoint)
             .NotEmpty().WithMessage("StartPoint é obrigatório.")
             .MaximumLength(100).WithMessage("StartPoint deve ter no máximo 100 caracteres.");

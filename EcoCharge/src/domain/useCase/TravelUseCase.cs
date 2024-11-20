@@ -15,7 +15,7 @@ namespace EcoCharge.domain.useCase
             _travelRepository = travelRepository;
         }
 
-        public Travel FindById(int id)
+        public Travel FindById(string id)
         {
             var travel = _travelRepository.FindById(id);
 
@@ -39,7 +39,7 @@ namespace EcoCharge.domain.useCase
             _travelRepository.Create(travel);
         }
 
-        public Travel Update(int id, Travel travel)
+        public Travel Update(string id, Travel travel)
         {
             var persistedTravel = _travelRepository.FindById(id);
 
@@ -53,7 +53,7 @@ namespace EcoCharge.domain.useCase
             return travel;
         }
 
-        public void Delete(int id)
+        public void Delete(string id)
         {
             var persistedTravel = _travelRepository.FindById(id);
 

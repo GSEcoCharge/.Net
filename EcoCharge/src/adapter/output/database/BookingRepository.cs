@@ -12,16 +12,9 @@ namespace EcoCharge.adapter.output.database
             _context = context;
         }
 
-        public Booking FindById(int id)
+        public Booking FindById(string id)
         {
-            var booking = _context.Bookings.FirstOrDefault(c => c.Id == id);
-
-            if (booking == null)
-            {
-                throw new KeyNotFoundException($"Booking with ID {id} not found.");
-            }
-
-            return booking;
+            return _context.Bookings.FirstOrDefault(c => c.Id == id);
         }
 
         public void Create(Booking booking)
@@ -30,7 +23,7 @@ namespace EcoCharge.adapter.output.database
             _context.SaveChanges();
         }
 
-        public Booking Update(int id, Booking booking)
+        public Booking Update(string id, Booking booking)
         {
             var existingBooking = _context.Bookings.FirstOrDefault(c => c.Id == id);
 
@@ -41,7 +34,7 @@ namespace EcoCharge.adapter.output.database
 
             existingBooking.UserId = booking.UserId;
             existingBooking.ChargingPointId = booking.ChargingPointId;
-            existingBooking.Date = booking.Date;
+            existingBooking.BookingDate = booking.BookingDate;
             existingBooking.Status = booking.Status;
 
             _context.Bookings.Update(existingBooking);
@@ -50,7 +43,7 @@ namespace EcoCharge.adapter.output.database
             return existingBooking;
         }
         
-        public void Delete(int id)
+        public void Delete(string id)
         {
             var booking = _context.Bookings.FirstOrDefault(c => c.Id == id);
 

@@ -13,8 +13,8 @@ public class BookingValidator : AbstractValidator<Booking>
         RuleFor(booking => booking.ChargingPointId)
             .NotEmpty().WithMessage("ChargingPointId é obrigatório.");
 
-        RuleFor(booking => booking.Date)
-            .Matches(@"^\d{4}-\d{2}-\d{2}$").When(booking => !string.IsNullOrEmpty(booking.Date))
+        RuleFor(booking => booking.BookingDate)
+            .Matches(@"^\d{4}-\d{2}-\d{2}$").When(booking => !string.IsNullOrEmpty(booking.BookingDate))
             .WithMessage("Date deve estar no formato AAAA-MM-DD.");
 
         RuleFor(booking => booking.Status)

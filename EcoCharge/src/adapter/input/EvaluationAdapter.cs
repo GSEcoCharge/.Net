@@ -18,7 +18,7 @@ namespace EcoCharge.adapter.input
             _evaluationValidator = evaluationValidator;
         }
 
-        public Evaluation FindById(int id)
+        public Evaluation FindById(string id)
         {
             var evaluation = _evaluationUseCase.FindById(id);
     
@@ -36,13 +36,13 @@ namespace EcoCharge.adapter.input
             _evaluationUseCase.Create(evaluation);
         }
 
-        public Evaluation Update(int id, Evaluation evaluation)
+        public Evaluation Update(string id, Evaluation evaluation)
         {
             ValidateEvaluation(evaluation);
             return _evaluationUseCase.Update(id, evaluation);
         }
 
-        public void Delete(int id)
+        public void Delete(string id)
         {
             _evaluationUseCase.Delete(id);
         }

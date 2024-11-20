@@ -18,7 +18,7 @@ namespace EcoCharge.adapter.input
             _stopingPointValidator = stopingPointValidator;
         }
 
-        public StopingPoint FindById(int id)
+        public StopingPoint FindById(string id)
         {
             var stopingPoint = _stopingPointUseCase.FindById(id);
     
@@ -36,13 +36,13 @@ namespace EcoCharge.adapter.input
             _stopingPointUseCase.Create(stopingPoint);
         }
 
-        public StopingPoint Update(int id, StopingPoint stopingPoint)
+        public StopingPoint Update(string id, StopingPoint stopingPoint)
         {
             ValidateStopingPoint(stopingPoint);
             return _stopingPointUseCase.Update(id, stopingPoint);
         }
 
-        public void Delete(int id)
+        public void Delete(string id)
         {
             _stopingPointUseCase.Delete(id);
         }
