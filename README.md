@@ -1,35 +1,44 @@
-# Sprint 04 - .NET
+# EcoCharge - .NET
 
-- Augusto Barcelos Barros – RM: 98078
-- Gabriel Souza de Queiroz – RM: 98570
-- Lucas Pinheiro de Melo – RM: 97707
-- Mel Maia Rodrigues – RM: 98266
+- 98078 - Augusto Barcelos Barros
+- 551423 - Izabelly De Oliveira Menezes
+- 97707 - Lucas Pinheiro de Melo
+- 99578 - Marcos Henrique Garrido da Silva
+- 98266 - Mel Maia Rodrigues
 
 ## Definição da Arquitetura da API
 
-Para a nossa solução, optamos por utilizar uma arquitetura monolítica. A escolha por essa abordagem se deve ao fato de que, embora o projeto tenha potencial para ser escalável e possua um domínio central com subdomínios distintos, ele se concentra em resolver uma dor específica do cliente de forma simples e direta. O foco principal é desenvolver uma solução eficiente, que atenda às necessidades atuais com o menor custo possível, tanto em termos de desenvolvimento quanto de manutenção.
+A solução foi desenvolvida utilizando uma arquitetura monolítica. Essa escolha se baseia em atender a necessidade de criar uma solução integrada e eficiente que abranja as funcionalidades centrais de um sistema de gestão de veículos elétricos, com subdomínios interconectados.
 
-A abordagem monolítica é ideal para este estágio do projeto, pois facilita a implementação inicial, reduz a complexidade e acelera o tempo de entrega. Todos os componentes do sistema, incluindo as funcionalidades de precificação de convênios e recomendação de hospitais e clínicas, serão desenvolvidos e implantados como uma única unidade. Isso simplifica a gestão do código, a implantação e a depuração, além de permitir uma comunicação direta entre os diferentes módulos do sistema, sem a necessidade de configurar e gerenciar a comunicação entre serviços separados.
+O principal objetivo é resolver problemas do cliente, como planejamento de viagens, carregamento eficiente de veículos e gerenciamento de usuários, de forma simples e direta. A abordagem monolítica facilita a implementação inicial, reduzindo a complexidade e os custos de desenvolvimento e manutenção.
+
+A integração de componentes, como controle de viagens, pontos de recarga e avaliações, em uma única unidade, permite uma comunicação fluida e evita a sobrecarga inicial de configurar e gerenciar múltiplos serviços. Caso o projeto cresça em complexidade, será avaliada uma migração para uma arquitetura de microserviços, garantindo escalabilidade e manutenção otimizada.
 
 ## Implementação da API e Justificativa da Arquitetura Escolhida
 
-A implementação da API seguirá os princípios da arquitetura monolítica, onde todo o código-fonte do projeto, incluindo os subdomínios "Cliente" e "Unidade", será mantido em um único repositório e será compilado e executado como um único aplicativo. Isso significa que todas as funcionalidades, desde a interface com o usuário até a lógica de negócios e o acesso a dados, estarão integradas em um único código-base.
+A implementação da API centraliza toda a lógica de negócios e operações em um único aplicativo. Entre os principais componentes estão:  
 
-Uma das principais diferenças entre uma arquitetura monolítica e uma arquitetura de microservices é a forma como os módulos são gerenciados e implantados. Em uma arquitetura de microservices, cada serviço é independente, com seu próprio ciclo de vida, podendo ser desenvolvido, implantado e escalado separadamente. Isso proporciona maior flexibilidade e resiliência, especialmente em sistemas complexos e de grande escala. No entanto, essa abordagem também traz desafios adicionais, como a necessidade de gerenciar a comunicação entre serviços, lidar com a consistência de dados distribuídos e orquestrar a implantação de múltiplos serviços.
+- **Usuários e Veículos:** Gerenciamento de perfis, veículos registrados e preferências.  
+- **Viagens e Pontos de Parada:** Planejamento de viagens e integração com estações de recarga.  
+- **Postos de Recarga:** Localização e avaliações.  
+- **Histórico e Reservas:** Registro de recargas e gestão de reservas em pontos de recarga.  
 
-No contexto do nosso projeto atual, onde o objetivo é criar uma solução eficiente e de fácil manutenção, a arquitetura monolítica se mostra mais adequada. Entretanto, à medida que o projeto evoluir, novas funcionalidades forem adicionadas e a complexidade do sistema aumentar, será natural considerar a migração para uma arquitetura de microservices. Isso permitirá uma melhor separação de domínios, facilitando a escalabilidade, a manutenção e a adição de novas funcionalidades de forma organizada e estruturada.
+Essa abordagem monolítica é ideal para o contexto atual do projeto, permitindo entregas rápidas e manutenção simplificada, ao mesmo tempo que estabelece uma base sólida para expansões futuras.
 
 ## Testes unitários
 
-Adicionamos alguns testes unitários na nossa classe core, Customer, para poder testar alguns fluxos em todos os endpoints que essa entidade possui, pois acreditamos que como o cliente é o ponto principal de nossa solução, precisamos que o fluxo inteiro esteja em total funcionamento, e com os testes unitários, conseguimos garantir isso. Foi aplicada uma cobertura de código de 100% em todo fluxo do Customer.
+Focamos nos testes unitários das classes centrais, como **User** e **Vehicle**, para validar os fluxos críticos de nossa aplicação.  
 
-## API externa
-
-Como consulta a uma API externa, adicionamos um endpoint que tem como funcionalidade, na hora que um cliente vai procurar alguma clinica para se consultar, acionamos esse endpoint, que valida se o cep atual dele é um cep valido, para que possamos fazer a análise correta e recomendações sejam feitas o mais precisamente possivel.
+Com especial atenção ao **Customer**, realizamos uma cobertura de 100% em todos os endpoints relacionados, garantindo a confiabilidade do sistema. O uso de testes automáticos permite identificar e corrigir falhas rapidamente, mantendo o alto padrão de qualidade do código.
 
 ## IA generativa
 
-A análise de IA generativa foi escolhida para o projeto com o objetivo de enriquecer a experiência do usuário, oferecendo personalização e insights úteis. A funcionalidade de recomendação sugere itens que podem ser do interesse de cada cliente, enquanto a análise de sentimento interpreta o tom das mensagens, permitindo uma interação mais empática e adequada com os usuários.
+Para aprimorar a experiência do usuário, incluímos funcionalidades baseadas em IA generativa:  
+
+1. **Recomendações Personalizadas:** Sugestão de estações de recarga e paradas com base no histórico e preferências do usuário.  
+2. **Análise de Sentimento:** Interpretação do tom das mensagens para interações mais empáticas e dinâmicas.
+
+Essas implementações personalizam a interação e tornam o sistema mais intuitivo e centrado no cliente.
 
 ---
 
@@ -50,135 +59,119 @@ Acessar a API:
 
 Utilize um cliente HTTP como o Postman ou curl para interagir com os endpoints expostos.
 Endpoints disponíveis:
-## Endpoints
+# Documentação da API EcoCharge
 
-### AgreementController
-
-1. **GET /api/agreement/{id}**  
-   Retorna o acordo com o ID especificado.
-   - **Respostas**:
-     - `200 OK`: Acordo encontrado.
-     - `404 NotFound`: Acordo não encontrado.
-     - `400 BadRequest`: ID inválido.
-
-2. **GET /api/agreement**  
-   Retorna uma lista de todos os acordos.
-   - **Respostas**:
-     - `200 OK`: Lista de acordos.
-     - `500 InternalServerError`: Erro no servidor.
-
-3. **POST /api/agreement**  
-   Cria um novo acordo.
-   - **Body**: Objeto JSON de *Agreement*.
-   - **Respostas**:
-     - `201 Created`: Acordo criado.
-     - `400 BadRequest`: Dados inválidos.
-
-4. **PUT /api/agreement/{id}**  
-   Atualiza um acordo existente com o ID especificado.
-   - **Body**: Objeto JSON de *Agreement*.
-   - **Respostas**:
-     - `200 OK`: Acordo atualizado.
-     - `404 NotFound`: Acordo não encontrado.
-     - `400 BadRequest`: ID ou dados inválidos.
-
-5. **DELETE /api/agreement/{id}**  
-   Exclui o acordo com o ID especificado.
-   - **Respostas**:
-     - `204 NoContent`: Acordo excluído.
-     - `404 NotFound`: Acordo não encontrado.
-     - `400 BadRequest`: ID inválido.
+Este documento apresenta um resumo dos endpoints disponíveis na API EcoCharge, organizados por seus respectivos controllers.
 
 ---
 
-### CustomerController
+## **BookingController**
+Rota Base: `api/booking`
 
-1. **GET /api/customer/{id}**  
-   Retorna o cliente com o ID especificado.
-   - **Respostas**:
-     - `200 OK`: Cliente encontrado.
-     - `404 NotFound`: Cliente não encontrado.
-     - `400 BadRequest`: ID inválido.
-
-2. **POST /api/customer**  
-   Cria um novo cliente.
-   - **Body**: Objeto JSON de *Customer*.
-   - **Respostas**:
-     - `201 Created`: Cliente criado.
-     - `400 BadRequest`: Dados inválidos.
-
-3. **PUT /api/customer/{id}**  
-   Atualiza um cliente existente com o ID especificado.
-   - **Body**: Objeto JSON de *Customer*.
-   - **Respostas**:
-     - `200 OK`: Cliente atualizado.
-     - `404 NotFound`: Cliente não encontrado.
-     - `400 BadRequest`: ID ou dados inválidos.
-
-4. **DELETE /api/customer/{id}**  
-   Exclui o cliente com o ID especificado.
-   - **Respostas**:
-     - `204 NoContent`: Cliente excluído.
-     - `404 NotFound`: Cliente não encontrado.
-     - `400 BadRequest`: ID inválido.
-
-5. **GET /api/customer/validate-cep/{cep}**
-   Valida o CEP do cliente usando um serviço externo.
-   
-   - **Respostas**:
-      - `200 OK`: CEP válido com informações detalhadas.
-      - `400 BadRequest`: CEP inválido ou formato incorreto.
-
-6. **GET /api/customer/{id}/recommendations**
-   Retorna uma lista de recomendações de produtos personalizadas para o cliente com o ID especificado.
-
-   - **Respostas**:
-      - `200 OK`: Lista de recomendações.
-      - `404 NotFound`: Cliente não encontrado.
-
-7. **POST /api/customer/analyze-sentiment**
-   Realiza a análise de sentimento sobre o texto fornecido, retornando uma interpretação do tom (positivo, negativo ou neutro).
-
-   - **Body**: String de texto para análise.
-   - **Respostas**:
-      - `200 OK`: Resultado da análise de sentimento.
-      - `400 BadRequest`: Texto inválido ou não fornecido.
+| Método | Endpoint            | Descrição                                       |
+|--------|---------------------|-------------------------------------------------|
+| GET    | `/{id}`             | Obtém uma reserva pelo seu ID.                 |
+| POST   | `/`                 | Cria uma nova reserva.                         |
+| PUT    | `/{id}`             | Atualiza uma reserva existente pelo seu ID.    |
+| DELETE | `/{id}`             | Remove uma reserva pelo seu ID.                |
 
 ---
 
-### UnitController
+## **ChargingHistoryController**
+Rota Base: `api/chargingHistory`
 
-1. **GET /api/unit/{id}**  
-   Retorna a unidade com o ID especificado.
-   - **Respostas**:
-     - `200 OK`: Unidade encontrada.
-     - `404 NotFound`: Unidade não encontrada.
-     - `400 BadRequest`: ID inválido.
+| Método | Endpoint            | Descrição                                           |
+|--------|---------------------|-----------------------------------------------------|
+| GET    | `/{id}`             | Obtém o histórico de carregamento pelo ID.         |
+| POST   | `/`                 | Cria um novo registro de histórico de carregamento. |
+| PUT    | `/{id}`             | Atualiza um registro existente de histórico.        |
+| DELETE | `/{id}`             | Remove um registro de histórico de carregamento.    |
 
-2. **GET /api/unit**  
-   Retorna uma lista de todas as unidades.
-   - **Respostas**:
-     - `200 OK`: Lista de unidades.
-     - `500 InternalServerError`: Erro no servidor.
+---
 
-3. **POST /api/unit**  
-   Cria uma nova unidade.
-   - **Body**: Objeto JSON de *Unit*.
-   - **Respostas**:
-     - `201 Created`: Unidade criada.
-     - `400 BadRequest`: Dados inválidos.
+## **ChargingPointController**
+Rota Base: `api/chargingPoint`
 
-4. **PUT /api/unit/{id}**  
-   Atualiza uma unidade existente com o ID especificado.
-   - **Body**: Objeto JSON de *Unit*.
-   - **Respostas**:
-     - `200 OK`: Unidade atualizada.
-     - `404 NotFound`: Unidade não encontrada.
-     - `400 BadRequest`: ID ou dados inválidos.
+| Método | Endpoint            | Descrição                                |
+|--------|---------------------|------------------------------------------|
+| GET    | `/{id}`             | Obtém um ponto de carregamento pelo ID. |
+| POST   | `/`                 | Cria um novo ponto de carregamento.     |
+| PUT    | `/{id}`             | Atualiza um ponto de carregamento.      |
+| DELETE | `/{id}`             | Remove um ponto de carregamento.        |
 
-5. **DELETE /api/unit/{id}**  
-   Exclui a unidade com o ID especificado.
-   - **Respostas**:
-     - `204 NoContent`: Unidade excluída.
-     - `404 NotFound`: Unidade não encontrada.
-     - `400 BadRequest`: ID inválido.
+---
+
+## **ChargingPostController**
+Rota Base: `api/chargingPost`
+
+| Método | Endpoint            | Descrição                              |
+|--------|---------------------|----------------------------------------|
+| GET    | `/{id}`             | Obtém um posto de carregamento pelo ID. |
+| POST   | `/`                 | Cria um novo posto de carregamento.     |
+| PUT    | `/{id}`             | Atualiza um posto de carregamento.      |
+| DELETE | `/{id}`             | Remove um posto de carregamento.        |
+
+---
+
+## **EvaluationController**
+Rota Base: `api/evaluation`
+
+| Método | Endpoint            | Descrição                        |
+|--------|---------------------|----------------------------------|
+| GET    | `/{id}`             | Obtém uma avaliação pelo ID.    |
+| POST   | `/`                 | Cria uma nova avaliação.        |
+| PUT    | `/{id}`             | Atualiza uma avaliação existente. |
+| DELETE | `/{id}`             | Remove uma avaliação.           |
+
+---
+
+## **StopingPointController**
+Rota Base: `api/stopingPoint`
+
+| Método | Endpoint            | Descrição                                  |
+|--------|---------------------|--------------------------------------------|
+| GET    | `/{id}`             | Obtém um ponto de parada pelo ID.         |
+| POST   | `/`                 | Cria um novo ponto de parada.             |
+| PUT    | `/{id}`             | Atualiza um ponto de parada existente.    |
+| DELETE | `/{id}`             | Remove um ponto de parada.                |
+
+---
+
+## **TravelController**
+Rota Base: `api/travel`
+
+| Método | Endpoint            | Descrição                                |
+|--------|---------------------|------------------------------------------|
+| GET    | `/{id}`             | Obtém uma viagem pelo seu ID.           |
+| POST   | `/`                 | Cria uma nova viagem.                   |
+| PUT    | `/{id}`             | Atualiza uma viagem existente pelo ID.  |
+| DELETE | `/{id}`             | Remove uma viagem pelo ID.              |
+
+---
+
+## **UserController**
+Rota Base: `api/user`
+
+| Método  | Endpoint                      | Descrição                                                        |
+|---------|-------------------------------|------------------------------------------------------------------|
+| GET     | `/{id}`                       | Obtém um usuário pelo seu ID.                                   |
+| POST    | `/`                           | Cria um novo usuário.                                           |
+| PUT     | `/{id}`                       | Atualiza os dados de um usuário existente pelo ID.              |
+| DELETE  | `/{id}`                       | Remove um usuário pelo ID.                                      |
+| POST    | `/analyze-sentiment`          | Analisa o sentimento de um texto enviado.                       |
+| GET     | `/{id}/recommend-charging`    | Recomenda estações de carregamento com base no histórico do usuário. |
+
+---
+
+## **VehicleController**
+Rota Base: `api/vehicle`
+
+| Método | Endpoint            | Descrição                                    |
+|--------|---------------------|----------------------------------------------|
+| GET    | `/{id}`             | Obtém um veículo pelo seu ID.               |
+| POST   | `/`                 | Cria um novo veículo.                       |
+| PUT    | `/{id}`             | Atualiza os dados de um veículo pelo ID.    |
+| DELETE | `/{id}`             | Remove um veículo pelo ID.                  |
+
+---
+
